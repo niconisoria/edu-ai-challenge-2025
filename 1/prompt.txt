@@ -1,0 +1,14 @@
+[Task]
+Choose a suitable database for a new application that meets the following requirements:
+- Social platform with millions of users
+- Need to store profiles, posts, and connections between users
+- High data read speed required
+- Expected 80% read operations, 20% write operations
+- Scalability is important as the user base grows
+
+[Instructions]
+- Initial Selection: Identify a shortlist of potential database candidates that align with the above requirements. Provide a brief justification for including each one.
+- Comparison Table: Create a comparison table that evaluates each candidate against the specified requirements.
+- Final Selection: Using the table, eliminate candidates one by one with clear reasoning until you arrive at the database that best meets all the requirements.
+
+Important: The final candidate should satisfy all the requirements at once without hybrid solutions.
