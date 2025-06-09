@@ -1,0 +1,13 @@
+[Task]
+Prepare a Jira ticket to report a bug
+
+[Entry]
+Since Release 6.20.7, there are two fields for "permissions" in the CMS
+
+[Output]
+- Title
+- Description
+- Steps to Reproduce
+- Expected vs Actual Behavior
+- Environment (if known)
+- Severity or Impact
