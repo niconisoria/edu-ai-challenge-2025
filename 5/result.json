@@ -1,0 +1,57 @@
+[
+  {
+    "sentiment": "Negative",
+    "isRelevant": true,
+    "mainSubject": "Sensor performance and connectivity issues",
+    "positives": [],
+    "painPoints": [
+      "Sensor stops tracking briefly and frequently even at 8000Hz",
+      "Issue persists when plugged in directly",
+      "Dongle did not work initially",
+      "High price ($150) not justified by reliability"
+    ],
+    "improvementSuggestions": [
+      "Fix sensor tracking interruptions",
+      "Ensure dongle reliability and connectivity"
+    ],
+    "featuresMentioned": [
+      "Sensor",
+      "Polling rate (8000Hz)",
+      "Connectivity (dongle)",
+      "Price"
+    ],
+    "userExpertise": "Experienced"
+  },
+  {
+    "sentiment": "Mixed",
+    "isRelevant": true,
+    "mainSubject": "Value for money and product performance",
+    "positives": [
+      "Product has no flaws according to user",
+      "Good performance"
+    ],
+    "painPoints": [
+      "Not worth the price",
+      "Similar performance available at lower price with cheaper products"
+    ],
+    "improvementSuggestions": [
+      "Better justify price with unique features or performance"
+    ],
+    "featuresMentioned": [
+      "Performance",
+      "Price",
+      "Product value"
+    ],
+    "userExpertise": "Unknown"
+  },
+  {
+    "sentiment": "Unknown",
+    "isRelevant": false,
+    "mainSubject": null,
+    "positives": [],
+    "painPoints": [],
+    "improvementSuggestions": [],
+    "featuresMentioned": [],
+    "userExpertise": "Unknown"
+  }
+]
