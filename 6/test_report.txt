@@ -1,0 +1,31 @@
+Started with run options --seed 30372
+
+TestEnigma
+  test_enigma_encrypt_char_with_plugboard                         PASS (0.00s)
+  test_rotor_step                                                 PASS (0.00s)
+  test_rotor_at_notch                                             PASS (0.00s)
+  test_reflector_is_involution                                    PASS (0.00s)
+  test_enigma_encrypt_char_non_alphabetic                         PASS (0.00s)
+  test_enigma_never_encrypts_to_itself                            PASS (0.00s)
+  test_enigma_reciprocal_property_without_plugboard               PASS (0.00s)
+  test_enigma_step_rotors_normal                                  PASS (0.00s)
+  test_enigma_step_rotors_double_stepping                         PASS (0.00s)
+  test_enigma_different_rotor_positions                           PASS (0.00s)
+  test_enigma_initialization                                      PASS (0.00s)
+  test_enigma_reciprocal_property_with_plugboard                  PASS (0.00s)
+  test_rotor_wiring_permutations                                  PASS (0.00s)
+  test_alphabet_constant                                          PASS (0.00s)
+  test_plugboard_swap                                             PASS (0.00s)
+  test_rotor_backward_transformation                              PASS (0.00s)
+  test_enigma_process_text                                        PASS (0.00s)
+  test_enigma_different_ring_settings                             PASS (0.00s)
+  test_rotor_initialization                                       PASS (0.00s)
+  test_rotor_forward_transformation                               PASS (0.00s)
+  test_rotor_constants                                            PASS (0.00s)
+  test_mod_function                                               PASS (0.00s)
+  test_enigma_encrypt_char_alphabetic                             PASS (0.00s)
+
+Finished in 0.00149s
+23 tests, 124 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for Minitest to /home/nikolasnisoria/Desktop/EDU/6/coverage.
+Line Coverage: 80.6% (54 / 67)
