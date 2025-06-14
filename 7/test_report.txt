@@ -1,0 +1,11 @@
+Run options: --seed 65464
+
+# Running:
+
+............................................................................................
+
+Finished in 0.006274s, 14662.5813 runs/s, 54187.8004 assertions/s.
+
+92 runs, 340 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for Unit Tests to /home/nikolasnisoria/Desktop/EDU/7/coverage.
+Line Coverage: 84.75% (450 / 531)
