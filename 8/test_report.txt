@@ -1,0 +1,186 @@
+TEST REPORT
+===========
+
+COVERAGE SUMMARY
+================
+validation-system/application           coverage: 0.0% of statements
+validation-system/domain/validation     coverage: 96.7% of statements
+validation-system/infrastructure/schema coverage: 100.0% of statements
+TOTAL: 89.5% of statements
+
+DETAILED COVERAGE BREAKDOWN
+===========================
+validation-system/application/main.go:9:                        main                    0.0%
+validation-system/application/main.go:17:                       ExampleComplexSchema    0.0%
+validation-system/domain/validation/array_validator.go:14:      Validate                95.7%
+validation-system/domain/validation/array_validator.go:83:      Optional                100.0%
+validation-system/domain/validation/array_validator.go:88:      WithMessage             100.0%
+validation-system/domain/validation/base_validator.go:9:        setOptional             100.0%
+validation-system/domain/validation/base_validator.go:13:       setMessage              100.0%
+validation-system/domain/validation/base_validator.go:17:       getMessage              100.0%
+validation-system/domain/validation/base_validator.go:24:       isOptional              100.0%
+validation-system/domain/validation/boolean_validator.go:13:    Validate                100.0%
+validation-system/domain/validation/boolean_validator.go:47:    Optional                100.0%
+validation-system/domain/validation/boolean_validator.go:52:    WithMessage             100.0%
+validation-system/domain/validation/date_validator.go:14:       Validate                100.0%
+validation-system/domain/validation/date_validator.go:48:       Optional                100.0%
+validation-system/domain/validation/date_validator.go:53:       WithMessage             100.0%
+validation-system/domain/validation/number_validator.go:14:     Validate                100.0%
+validation-system/domain/validation/number_validator.go:100:    Min                     100.0%
+validation-system/domain/validation/number_validator.go:105:    Max                     100.0%
+validation-system/domain/validation/number_validator.go:110:    Optional                100.0%
+validation-system/domain/validation/number_validator.go:115:    WithMessage             100.0%
+validation-system/domain/validation/object_validator.go:14:     Validate                87.9%
+validation-system/domain/validation/object_validator.go:115:    Optional                100.0%
+validation-system/domain/validation/object_validator.go:120:    WithMessage             100.0%
+validation-system/domain/validation/object_validator.go:126:    NewObjectValidator      100.0%
+validation-system/domain/validation/string_validator.go:17:     Validate                100.0%
+validation-system/domain/validation/string_validator.go:92:     MinLength               100.0%
+validation-system/domain/validation/string_validator.go:97:     MaxLength               100.0%
+validation-system/domain/validation/string_validator.go:102:    Pattern                 100.0%
+validation-system/domain/validation/string_validator.go:108:    Optional                100.0%
+validation-system/domain/validation/string_validator.go:113:    WithMessage             100.0%
+validation-system/domain/validation/validation_error.go:13:     Error                   100.0%
+validation-system/infrastructure/schema/schema_factory.go:11:   String                  100.0%
+validation-system/infrastructure/schema/schema_factory.go:16:   Number                  100.0%
+validation-system/infrastructure/schema/schema_factory.go:21:   Boolean                 100.0%
+validation-system/infrastructure/schema/schema_factory.go:26:   Date                    100.0%
+validation-system/infrastructure/schema/schema_factory.go:31:   Object                  100.0%
+validation-system/infrastructure/schema/schema_factory.go:36:   Array                   100.0%
+
+TEST RESULTS
+============
+All tests PASSED
+
+PACKAGE: validation-system/domain/validation
+- TestArrayValidator_Validate: PASS
+- TestArrayValidator_ValidateInvalidTypes: PASS
+- TestArrayValidator_ValidateNil: PASS
+- TestArrayValidator_ValidateNilOptional: PASS
+- TestArrayValidator_WithItemValidator: PASS
+- TestArrayValidator_WithItemValidatorComplex: PASS
+- TestArrayValidator_WithItemValidatorMultipleErrors: PASS
+- TestArrayValidator_EmptyArray: PASS
+- TestArrayValidator_EmptyArrayWithItemValidator: PASS
+- TestArrayValidator_Optional: PASS
+- TestArrayValidator_WithMessage: PASS
+- TestArrayValidator_WithMessageValidation: PASS
+- TestArrayValidator_Chaining: PASS
+- TestArrayValidator_InterfaceCompliance: PASS
+- TestArrayValidator_DefaultState: PASS
+- TestArrayValidator_DifferentArrayTypes: PASS
+- TestArrayValidator_ArrayType: PASS
+- TestArrayValidator_ItemValidatorWithNestedFields: PASS
+- TestBaseValidator_SetOptional: PASS
+- TestBaseValidator_SetMessage: PASS
+- TestBaseValidator_GetMessageWithEmptyCustomMessage: PASS
+- TestBaseValidator_IsOptional: PASS
+- TestBooleanValidator_Validate: PASS
+- TestBooleanValidator_ValidateInvalidTypes: PASS
+- TestBooleanValidator_ValidateNil: PASS
+- TestBooleanValidator_ValidateNilOptional: PASS
+- TestBooleanValidator_Optional: PASS
+- TestBooleanValidator_WithMessage: PASS
+- TestBooleanValidator_WithMessageValidation: PASS
+- TestBooleanValidator_Chaining: PASS
+- TestBooleanValidator_InterfaceCompliance: PASS
+- TestBooleanValidator_DefaultState: PASS
+- TestBooleanValidator_ErrorMessages: PASS
+- TestDateValidator_Validate: PASS
+- TestDateValidator_ValidateInvalidTypes: PASS
+- TestDateValidator_ValidateNil: PASS
+- TestDateValidator_ValidateNilOptional: PASS
+- TestDateValidator_Optional: PASS
+- TestDateValidator_WithMessage: PASS
+- TestDateValidator_WithMessageValidation: PASS
+- TestDateValidator_Chaining: PASS
+- TestDateValidator_InterfaceCompliance: PASS
+- TestDateValidator_DefaultState: PASS
+- TestDateValidator_EdgeCases: PASS
+- TestDateValidator_ErrorMessages: PASS
+- TestDateValidator_DifferentTimeFormats: PASS
+- TestIntegration_AllValidatorsTogether: PASS
+- TestNumberValidator_ValidateValidNumbers: PASS
+- TestNumberValidator_ValidateInvalidTypes: PASS
+- TestNumberValidator_ValidateNil: PASS
+- TestNumberValidator_ValidateNilOptional: PASS
+- TestNumberValidator_MinConstraint: PASS
+- TestNumberValidator_MaxConstraint: PASS
+- TestNumberValidator_MinMaxConstraints: PASS
+- TestNumberValidator_Min: PASS
+- TestNumberValidator_Max: PASS
+- TestNumberValidator_Optional: PASS
+- TestNumberValidator_WithMessage: PASS
+- TestNumberValidator_WithMessageValidation: PASS
+- TestNumberValidator_Chaining: PASS
+- TestNumberValidator_ZeroValues: PASS
+- TestNumberValidator_NegativeValues: PASS
+- TestNumberValidator_InterfaceCompliance: PASS
+- TestNumberValidator_DefaultState: PASS
+- TestNumberValidator_ErrorMessages: PASS
+- TestNumberValidator_DifferentNumericTypes: PASS
+- TestObjectValidator_ValidateEmptySchema: PASS
+- TestObjectValidator_ValidateWithSchema: PASS
+- TestObjectValidator_ValidateMissingRequiredField: PASS
+- TestObjectValidator_ValidateOptionalField: PASS
+- TestObjectValidator_ValidateExtraField: PASS
+- TestObjectValidator_ValidateInvalidFieldType: PASS
+- TestObjectValidator_ValidateNil: PASS
+- TestObjectValidator_ValidateNilOptional: PASS
+- TestObjectValidator_ValidateInvalidType: PASS
+- TestObjectValidator_ValidateEmptyObject: PASS
+- TestObjectValidator_ValidateEmptyObjectWithSchema: PASS
+- TestObjectValidator_ValidateComplexSchema: PASS
+- TestObjectValidator_Optional: PASS
+- TestObjectValidator_WithMessage: PASS
+- TestObjectValidator_Chaining: PASS
+- TestObjectValidator_InterfaceCompliance: PASS
+- TestObjectValidator_DefaultState: PASS
+- TestObjectValidator_ErrorMessages: PASS
+- TestObjectValidator_CustomMessage: PASS
+- TestStringValidator_Validate: PASS
+- TestStringValidator_ValidateInvalidTypes: PASS
+- TestStringValidator_ValidateNil: PASS
+- TestStringValidator_ValidateNilOptional: PASS
+- TestStringValidator_MinLength: PASS
+- TestStringValidator_MaxLength: PASS
+- TestStringValidator_Pattern: PASS
+- TestStringValidator_CombinedConstraints: PASS
+- TestStringValidator_EmptyString: PASS
+- TestStringValidator_Optional: PASS
+- TestStringValidator_WithMessage: PASS
+- TestStringValidator_WithMessageValidation: PASS
+- TestStringValidator_Chaining: PASS
+- TestStringValidator_InterfaceCompliance: PASS
+- TestStringValidator_DefaultState: PASS
+- TestStringValidator_ErrorMessages: PASS
+- TestStringValidator_ComplexPatterns: PASS
+- TestStringValidator_EdgeCases: PASS
+- TestValidationError_Error: PASS
+- TestValidationError_ErrorWithoutField: PASS
+- TestValidationResult_IsValid: PASS
+- TestValidationResult_Errors: PASS
+- TestValidationResult_EmptyErrors: PASS
+- TestValidationResult_NilErrors: PASS
+- TestValidationError_FieldAccess: PASS
+- TestValidationResult_Consistency: PASS
+
+PACKAGE: validation-system/infrastructure/schema
+- TestSchema_String: PASS
+- TestSchema_Number: PASS
+- TestSchema_Boolean: PASS
+- TestSchema_Date: PASS
+- TestSchema_Object: PASS
+- TestSchema_Array: PASS
+- TestSchema_ComplexSchema: PASS
+- TestSchema_EmptyObject: PASS
+- TestSchema_MethodChaining: PASS
+
+SUMMARY
+=======
+- Total Tests: 89
+- Passed: 89
+- Failed: 0
+- Overall Coverage: 89.5%
+- Core Validation Coverage: 96.7%
+- Schema Factory Coverage: 100.0% 
