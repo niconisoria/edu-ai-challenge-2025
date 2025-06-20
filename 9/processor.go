@@ -9,12 +9,30 @@ import (
 
 	"github.com/openai/openai-go"
 	"github.com/openai/openai-go/option"
+	"github.com/openai/openai-go/packages/param"
 )
+
+// ServiceReport represents the structured output format for service analysis
+type ServiceReport struct {
+	BriefHistory        string `json:"brief_history"`
+	TargetAudience      string `json:"target_audience"`
+	CoreFeatures        string `json:"core_features"`
+	UniqueSellingPoints string `json:"unique_selling_points"`
+	BusinessModel       string `json:"business_model"`
+	TechStackInsights   string `json:"tech_stack_insights"`
+	PerceivedStrengths  string `json:"perceived_strengths"`
+	PerceivedWeaknesses string `json:"perceived_weaknesses"`
+}
 
 // Example represents a few-shot learning example
 type Example struct {
 	Input  string
 	Output string
+}
+
+// ExamplesData represents the structure of the JSON file
+type ExamplesData struct {
+	Examples []Example `json:"examples"`
 }
 
 // Processor handles OpenAI API interactions with few-shot learning support
@@ -23,8 +41,10 @@ type Processor struct {
 	examples          []Example
 	systemPrompt      string
 	additionalContext string
+	schema            map[string]interface{}
 }
 
+// NewProcessor returns a new Processor
 func NewProcessor() (*Processor, error) {
 	apiKey := os.Getenv("OPENAI_API_KEY")
 	if apiKey == "" {
@@ -32,12 +52,24 @@ func NewProcessor() (*Processor, error) {
 	}
 
 	client := openai.NewClient(option.WithAPIKey(apiKey))
+
 	return &Processor{
 		client:            &client,
 		examples:          make([]Example, 0),
 		systemPrompt:      "",
 		additionalContext: "",
+		schema:            map[string]interface{}{},
 	}, nil
+}
+
+// SetSystemPrompt sets the system prompt for the processor
+func (p *Processor) SetSystemPrompt(prompt string) {
+	p.systemPrompt = prompt
+}
+
+// SetAdditionalContext sets the additional context for the processor
+func (p *Processor) SetAdditionalContext(context string) {
+	p.additionalContext = context
 }
 
 // AddExample adds a few-shot learning example to the processor
@@ -48,23 +80,18 @@ func (p *Processor) AddExample(input, output string) {
 	})
 }
 
-// ExamplesData represents the structure of the JSON file
-type ExamplesData struct {
-	Examples []Example `json:"examples"`
-}
-
-// LoadExamplesFromJSON loads examples from a JSON file
-func (p *Processor) LoadExamplesFromJSON(filePath string) error {
-	// Read the JSON file
+// LoadExamplesFromFile loads examples from a file
+func (p *Processor) LoadExamplesFromFile(filePath string) error {
+	// Read the file
 	data, err := os.ReadFile(filePath)
 	if err != nil {
-		return fmt.Errorf("failed to read JSON file %s: %w", filePath, err)
+		return fmt.Errorf("failed to read file %s: %w", filePath, err)
 	}
 
 	// Parse the JSON data
 	var examplesData ExamplesData
 	if err := json.Unmarshal(data, &examplesData); err != nil {
-		return fmt.Errorf("failed to parse JSON file %s: %w", filePath, err)
+		return fmt.Errorf("failed to parse file %s: %w", filePath, err)
 	}
 
 	// Add all examples to the processor
@@ -76,28 +103,24 @@ func (p *Processor) LoadExamplesFromJSON(filePath string) error {
 	return nil
 }
 
-// SetSystemPrompt sets the system prompt for the processor
-func (p *Processor) SetSystemPrompt(prompt string) {
-	p.systemPrompt = prompt
+// LoadSchemaFromFile loads a JSON schema from a file and updates the processor
+func (p *Processor) LoadSchemaFromFile(filePath string) error {
+	schemaData, err := os.ReadFile(filePath)
+	if err != nil {
+		return fmt.Errorf("failed to read schema file %s: %w", filePath, err)
+	}
+
+	var schema map[string]interface{}
+	if err := json.Unmarshal(schemaData, &schema); err != nil {
+		return fmt.Errorf("failed to parse schema file %s: %w", filePath, err)
+	}
+
+	p.schema = schema
+	return nil
 }
 
-// GetSystemPrompt returns the current system prompt
-func (p *Processor) GetSystemPrompt() string {
-	return p.systemPrompt
-}
-
-// SetAdditionalContext sets the additional context for the processor
-func (p *Processor) SetAdditionalContext(context string) {
-	p.additionalContext = context
-}
-
-// GetAdditionalContext returns the current additional context
-func (p *Processor) GetAdditionalContext() string {
-	return p.additionalContext
-}
-
-// ProcessInput processes input using few-shot learning examples
-func (p *Processor) ProcessInput(input string) (string, error) {
+// ProcessInput processes input using few-shot learning examples and returns structured output
+func (p *Processor) ProcessInput(input string) (*ServiceReport, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 
@@ -130,8 +153,8 @@ func (p *Processor) ProcessInput(input string) (string, error) {
 	for _, example := range p.examples {
 		// Add user message (input)
 		messages = append(messages, openai.ChatCompletionMessageParamUnion{
-			OfSystem: &openai.ChatCompletionSystemMessageParam{
-				Content: openai.ChatCompletionSystemMessageParamContentUnion{
+			OfUser: &openai.ChatCompletionUserMessageParam{
+				Content: openai.ChatCompletionUserMessageParamContentUnion{
 					OfString: openai.String(example.Input),
 				},
 			},
@@ -156,38 +179,38 @@ func (p *Processor) ProcessInput(input string) (string, error) {
 		},
 	})
 
-	// Prepare completion parameters
+	// Prepare completion parameters with structured output
 	params := openai.ChatCompletionNewParams{
 		Messages:    messages,
 		Model:       "gpt-4.1-mini",
-		MaxTokens:   openai.Int(1000),
+		MaxTokens:   openai.Int(2000),
 		Temperature: openai.Float(0.7),
 		ResponseFormat: openai.ChatCompletionNewParamsResponseFormatUnion{
-			OfText: &openai.ResponseFormatTextParam{},
+			OfJSONSchema: &openai.ResponseFormatJSONSchemaParam{
+				JSONSchema: openai.ResponseFormatJSONSchemaJSONSchemaParam{
+					Name:        "service_report",
+					Description: param.Opt[string]{Value: "A structured service analysis report"},
+					Schema:      p.schema,
+				},
+			},
 		},
 	}
 
 	chatCompletion, err := p.client.Chat.Completions.New(ctx, params)
 	if err != nil {
-		return "", fmt.Errorf("OpenAI API error: %w", err)
+		return nil, fmt.Errorf("OpenAI API error: %w", err)
 	}
 
 	if len(chatCompletion.Choices) == 0 {
-		return "", fmt.Errorf("no response from OpenAI")
+		return nil, fmt.Errorf("no response from OpenAI")
 	}
 
-	return chatCompletion.Choices[0].Message.Content, nil
-}
-
-func WriteResponseToFile(input, response string) error {
-	// Open file in append mode, create if doesn't exist
-	file, err := os.OpenFile("response.md", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-	if err != nil {
-		return err
+	// Parse the JSON response into ServiceReport struct
+	var serviceReport ServiceReport
+	responseContent := chatCompletion.Choices[0].Message.Content
+	if err := json.Unmarshal([]byte(responseContent), &serviceReport); err != nil {
+		return nil, fmt.Errorf("failed to parse JSON response: %w", err)
 	}
-	defer file.Close()
 
-	// Write to file
-	_, err = file.WriteString(response)
-	return err
+	return &serviceReport, nil
 }

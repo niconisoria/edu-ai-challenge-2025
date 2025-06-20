@@ -7,9 +7,14 @@ import (
 	"strings"
 )
 
-var processor *Processor
+func prepareProcessor(processor *Processor) {
+	// Load schema from file
+	err := processor.LoadSchemaFromFile("schema.json")
+	if err != nil {
+		fmt.Printf("Warning: Could not load schema from schema.json: %v\n", err)
+		fmt.Println("Continuing without schema...")
+	}
 
-func prepareProcessor() {
 	// Load system prompt from file
 	systemPrompt, err := os.ReadFile("system.txt")
 	if err != nil {
@@ -28,8 +33,8 @@ func prepareProcessor() {
 		processor.SetAdditionalContext(string(additionalContext))
 	}
 
-	// Load examples from JSON file
-	err = processor.LoadExamplesFromJSON("examples.json")
+	// Load examples from file
+	err = processor.LoadExamplesFromFile("examples.json")
 	if err != nil {
 		fmt.Printf("Warning: Could not load examples from JSON file: %v\n", err)
 		fmt.Println("Continuing without examples...")
@@ -38,8 +43,7 @@ func prepareProcessor() {
 
 func main() {
 	// Initialize processor
-	var err error
-	processor, err = NewProcessor()
+	processor, err := NewProcessor()
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
 		fmt.Println("Please set your OpenAI API key:")
@@ -48,7 +52,7 @@ func main() {
 	}
 
 	// Prepare the processor with examples
-	prepareProcessor()
+	prepareProcessor(processor)
 
 	fmt.Println("Welcome to the OpenAI CLI Application!")
 	fmt.Println("Enter 'quit' to exit")
@@ -88,6 +92,9 @@ func main() {
 		} else {
 			fmt.Println("Response written to response.md")
 		}
+
+		// Display formatted response to console
+		WriteResponseToConsole(input, response)
 	}
 
 	if err := scanner.Err(); err != nil {

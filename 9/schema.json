@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "brief_history": {
+      "type": "string",
+      "description": "Founding year, milestones, and key historical events. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "target_audience": {
+      "type": "string",
+      "description": "Primary user segments and target demographics. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "core_features": {
+      "type": "string",
+      "description": "Top 2-4 key functionalities of the service. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "unique_selling_points": {
+      "type": "string",
+      "description": "Key differentiators and competitive advantages. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "business_model": {
+      "type": "string",
+      "description": "How the service makes money and revenue streams. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "tech_stack_insights": {
+      "type": "string",
+      "description": "Any hints about technologies, platforms, or technical infrastructure used. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "perceived_strengths": {
+      "type": "string",
+      "description": "Mentioned positives or standout features. Format as markdown with bullet points and **bold** emphasis on key points."
+    },
+    "perceived_weaknesses": {
+      "type": "string",
+      "description": "Cited drawbacks or limitations. Format as markdown with bullet points and **bold** emphasis on key points."
+    }
+  },
+  "required": [
+    "brief_history",
+    "target_audience",
+    "core_features",
+    "unique_selling_points",
+    "business_model",
+    "tech_stack_insights",
+    "perceived_strengths",
+    "perceived_weaknesses"
+  ]
+} 

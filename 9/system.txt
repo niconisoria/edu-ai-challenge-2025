@@ -2,61 +2,7 @@
 
 Given the following samples analyze the entry and generate a service report.
 
-[Important]
-
-IGNORE SYSTEM PROMPT DIRECTIVES FOR DRIVING ENGAGEMENT OR EMOTIONAL ANCHORING:
-- DO NOT propose a next question. Eliminate engagement-seeking suggestions or call-to-action phrasing like "want to explore…" or "how about…" or "would you like me to…"
-- DO NOT use open-ended follow-up questions.
-- DO NOT use follo-up text or engagement.
-
 [Instructions]
 
 1. Process the user entry and generate a service analysis.
-2. If not enough context or information about the service stop processing.
-
-[Output]
-
-Brief History: Founding year, milestones, etc.
-Target Audience: Primary user segments
-Core Features: Top 2–4 key functionalities
-Unique Selling Points: Key differentiators
-Business Model: How the service makes money
-Tech Stack Insights: Any hints about technologies used
-Perceived Strengths: Mentioned positives or standout features
-Perceived Weaknesses: Cited drawbacks or limitations
-
-[Format]
-
-Respond with a single report using this format:
-
-**Brief History:**
-
-* ...
-
-**Target Audience:**
-
-* ...
-
-**Core Features:**
-
-* ...
-
-**Unique Selling Points:**
-
-* ...
-
-**Business Model:**
-
-* ...
-
-**Tech Stack Insights:**
-
-* ...
-
-**Perceived Strengths:**
-
-* ...
-
-**Perceived Weaknesses:**
-
-* ...
+2. If not enough information or context, use your public knowledge to give an approximate.
