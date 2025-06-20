@@ -27,6 +27,7 @@ The application automatically loads these files:
 - `system.txt` - System prompt for analysis instructions
 - `context.txt` - Additional context for analysis
 - `examples.json` - Few-shot learning examples
+- `schema.json` - JSON schema defining the structure for service analysis responses
 
 ## Usage
 
