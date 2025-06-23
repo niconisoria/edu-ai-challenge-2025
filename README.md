@@ -1,1 +1,1 @@
-# edu-ai-challenge-2025
+# EDU AI CHALLENGE 2025
