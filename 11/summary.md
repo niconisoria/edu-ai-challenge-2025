@@ -1,0 +1,7 @@
+Summary:
+
+A 25-year-old male presented with sharp chest pain lasting about three days, describing the pain as intermittent, sharp, located over the heart, sometimes radiating to the neck, and worsened by coughing or lying down but relieved by leaning forward. The pain is rated 6/10 in severity and lasts for a few seconds at a time. He reports no other symptoms such as shortness of breath, dizziness, palpitations, weakness, numbness, fever, or recent injuries. He had a recent flu a week ago but has since recovered.
+
+His past medical history is unremarkable, with no chronic conditions, surgeries, medications except occasional Tylenol use, and no allergies. Social history reveals he is a student and part-time postman, lives with his mother, drinks alcohol occasionally, and denies smoking or recreational drug use. A significant family history includes his father’s recent fatal heart attack two weeks ago, which is causing the patient considerable anxiety and concern about having a heart attack himself.
+
+The healthcare provider acknowledged the patient’s fear, conducted a thorough history, and planned to perform an ECG and possibly blood tests to assess cardiac function. The patient was advised to avoid excessive worry until test results are available, with reassurance and further management to follow based on findings.

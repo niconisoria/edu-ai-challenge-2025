@@ -1,0 +1,22 @@
+{
+  "word_count": 807,
+  "speaking_speed_wpm": 100,
+  "frequently_mentioned_topics": [
+    {
+      "topic": "chest pain",
+      "mentions": 17
+    },
+    {
+      "topic": "heart attack",
+      "mentions": 7
+    },
+    {
+      "topic": "symptoms and medical history",
+      "mentions": 16
+    },
+    {
+      "topic": "medications and treatments",
+      "mentions": 5
+    }
+  ]
+}
